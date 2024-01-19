@@ -12,6 +12,7 @@ const PrivilegesPage = () => {
       <BackButton />
       <div className="flex justify-between mt-3">
         <h1 className="text-3xl font-bold">Privileges</h1>
+        
         <div className="flex gap-2">
           <button
             className="border border-[rgba(0,0,0,0.4)] px-8 py-3 rounded-full font-semibold"
@@ -27,6 +28,10 @@ const PrivilegesPage = () => {
           </button>
         </div>
       </div>
+      <span style={{marginTop:'-2%'}}>
+        Find all of your company’s administrator accounts and their associate Priviligies.
+      </span>
+      
       <PrivilegesTable />
     </div>
   );

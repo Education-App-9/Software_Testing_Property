@@ -72,7 +72,7 @@ const CompanyProfileCard = ({ role }) => {
           Email: <span className="font-normal">gertrude@gmail.com</span>
         </p>
         <p className="gap-2 font-semibold text-themetext">
-          Account Status: <span className="font-normal">Active</span>
+          Account Status: <span className="font-normal " style={{ color: "green" }}>Active</span>
         </p>
         <p className="gap-2 font-semibold text-themetext">
           Contact: <span className="font-normal">+1 (609) 933-44-22</span>
