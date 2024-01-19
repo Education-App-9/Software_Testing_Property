@@ -115,6 +115,9 @@ const PropertyForm = ({ onNext }) => {
                 <option value="Freehold" selected>
                   Freehold
                 </option>
+                <option value="Villa" selected>
+                  Villa
+                </option>
               </select>
               <div className="pointer-events-none absolute right-2 top-[1.1rem] flex items-center px-2">
                 {/* Replace the following lie with your custom dropdown icon */}
