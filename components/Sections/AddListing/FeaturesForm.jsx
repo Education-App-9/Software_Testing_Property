@@ -137,24 +137,40 @@ const FeatureForm = ({ onPrev,onNext } ) => {
     updatedItems.splice(index, 1);
     setOtherItems(updatedItems);
   };
+  const toggleAllFeatures = () => {
+    const allSelected = featuresData.every((feature) => feature.isSelected);
+
+    setFeaturesData((prevFeaturesData) => {
+      return prevFeaturesData.map((feature) => ({
+        ...feature,
+        isSelected: !allSelected,
+      }));
+    });
+
+    if (allSelected) {
+      setSelectedFeatures([]);
+    } else {
+      setSelectedFeatures(featuresData.map((feature) => feature.id));
+    }
+  };
+
 
   return (
-    <div className="mx-10 ">
-      <div className="flex mt-7   justify-between ">
-        <div className="flex ">
-          <div className="  font-semibold	 text-base  ">Select the Features</div>
-          <div className="">
-            <p className=" text-[rgba(52,52,52,0.8)] ">
-              ({featuresData.filter((feature) => feature.isSelected).length}{" "}
-              selected)
+    <div className="mx-10">
+      <div className="flex mt-7 justify-between">
+        <div className="flex">
+          <div className="font-semibold text-base">Select the Features</div>
+          <div>
+            <p className="text-[rgba(52,52,52,0.8)]">
+              ({selectedFeatures.length} selected)
             </p>
           </div>
         </div>
         <div
-          onClick={clearSelection}
+          onClick={toggleAllFeatures}
           className="underline text-[#001749] underline-offset-auto cursor-pointer"
         >
-          UnselectAll
+          {selectedFeatures.length === 0 ? "Select All" : "Unselect All"}
         </div>
       </div>
       <div className=" gap-x-[2.3rem] grid grid-rows-2 grid-cols-7 gap-4 gap-y-6 mt-6 ">
