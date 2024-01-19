@@ -12,9 +12,32 @@ import ThreeDotSvg from "@/components/Svgs/ThreeDotSvg";
 import UploadIconSvg from "@/components/Svgs/UploadIconSvg";
 import Image from "next/image";
 import { useParams } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 
 const PropertyLayout = ({ children }) => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const closeDropdown = (e) => {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(e.target) && isDropdownOpen
+    ) {
+      setIsDropdownOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("click", closeDropdown);
+    return () => {
+      window.removeEventListener("click", closeDropdown);
+    };
+  }, []);
   const { id } = useParams();
   return (
     <div className="flex flex-col px-8 py-9">
@@ -32,13 +55,33 @@ const PropertyLayout = ({ children }) => {
           <button className="rounded-full p-3 h-11 w-11 flex items-center justify-center border border-[rgba(0,0,0,0.20)]">
             <CallSvg />
           </button>
-          <button className="h-11 flex items-center justify-center gap-2 px-4 py-2 border border-[rgba(0,0,0,0.20)] rounded-full">
+          <button className="h-11 bg-[#fff5e9] flex items-center justify-center gap-2 px-4 py-2 border border-[#ffaa45] rounded-full">
             <Image src="/imgs/profile-2.png" width={34} height={34} alt="svg" />
             <span>John David</span>
           </button>
-          <button className="hover:bg-[rgba(0,0,0,0.1)] w-10 flex items-center justify-center rounded-full">
-            <ThreeDotSvg />
-          </button>
+
+
+          <button
+        onClick={toggleDropdown}
+        className="hover:bg-[rgba(0,0,0,0.1)] w-10 flex items-center justify-center rounded-full"
+      >
+        <ThreeDotSvg />
+      </button>
+
+      {isDropdownOpen && (
+        <div 
+        ref={dropdownRef} 
+        className="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+          <div className="py-1">
+            <a
+              href="#"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            >
+              Edit
+            </a>
+          </div>
+        </div>
+      )}
         </div>
       </div>
       <h1 className="text-3xl font-bold mt-3">Boston Family Villa</h1>

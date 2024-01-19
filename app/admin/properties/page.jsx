@@ -17,12 +17,20 @@ const PropertiesPage = () => {
     <div className="flex flex-col p-[30px]">
       <div className="flex w-full justify-between">
         <div className="text-3xl font-bold">All Listings/ Properties</div>
-        <button
-          className="bg-primary px-8 py-3 rounded-full font-semibold"
-          onClick={() => router.push("/admin/properties/addlisting")}
-        >
-          + Add listing
-        </button>
+        <div>
+          <button
+            className="font-semibold mx-3" 
+            onClick={() => router.push("/admin/properties/addlisting")}
+          >
+            Request Property
+          </button>
+          <button
+            className="bg-primary px-8 py-3 rounded-full font-semibold"
+            onClick={() => router.push("/admin/properties/addlisting")}
+          >
+            + Add listing
+          </button>
+        </div>
       </div>
       <div className="w-full flex justify-between items-center mt-6">
         <div className="flex gap-3 w-2/3">
