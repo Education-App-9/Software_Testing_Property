@@ -5,9 +5,10 @@ import TableWithSort from "./TableWithSort";
 import RecordButton from "../Dropdowns/RecordDropdown";
 import SortByButton from "../Dropdowns/UsersSortByDropdown";
 import SearchIconSvg from "../Svgs/SearchIconSvg";
-import ActionDropdown from "../Dropdowns/ActionDropdown";
+
 import TablePagination from "./TablePagination";
 import Image from "next/image";
+import AdsActionDropdown from "../Dropdowns/AdActionDropDown";
 
 const AdsTable = () => {
   const headings = [
@@ -49,7 +50,7 @@ const AdsTable = () => {
         </div>
       ),
       endDate: "12/12/2023",
-      actions: <ActionDropdown />,
+      actions: <AdsActionDropdown />,
     },
     {
       id: 2,
@@ -81,7 +82,7 @@ const AdsTable = () => {
         </div>
       ),
       endDate: "12/12/2023",
-      actions: <ActionDropdown />,
+      actions: <AdsActionDropdown />,
     },
     {
       id: 3,
@@ -113,7 +114,7 @@ const AdsTable = () => {
         </div>
       ),
       endDate: "12/12/2023",
-      actions: <ActionDropdown />,
+      actions: <AdsActionDropdown />,
     },
     {
       id: 4,
@@ -145,7 +146,7 @@ const AdsTable = () => {
         </div>
       ),
       endDate: "12/12/2023",
-      actions: <ActionDropdown />,
+      actions: <AdsActionDropdown />,
     },
     {
       id: 5,
@@ -177,7 +178,7 @@ const AdsTable = () => {
         </div>
       ),
       endDate: "12/12/2023",
-      actions: <ActionDropdown />,
+      actions: <AdsActionDropdown />,
     },
     {
       id: 6,
@@ -209,7 +210,7 @@ const AdsTable = () => {
         </div>
       ),
       endDate: "12/12/2023",
-      actions: <ActionDropdown />,
+      actions: <AdsActionDropdown />,
     },
     {
       id: 7,
@@ -241,7 +242,7 @@ const AdsTable = () => {
         </div>
       ),
       endDate: "12/12/2023",
-      actions: <ActionDropdown />,
+      actions: <AdsActionDropdown />,
     },
     {
       id: 8,
@@ -273,7 +274,7 @@ const AdsTable = () => {
         </div>
       ),
       endDate: "12/12/2023",
-      actions: <ActionDropdown />,
+      actions: <AdsActionDropdown />,
     },
     {
       id: 9,
@@ -305,7 +306,7 @@ const AdsTable = () => {
         </div>
       ),
       endDate: "12/12/2023",
-      actions: <ActionDropdown />,
+      actions: <AdsActionDropdown />,
     },
     {
       id: 10,
@@ -337,7 +338,7 @@ const AdsTable = () => {
         </div>
       ),
       endDate: "12/12/2023",
-      actions: <ActionDropdown />,
+      actions: <AdsActionDropdown />,
     },
   ];
   return (

@@ -57,7 +57,10 @@ const MessagingSection = () => {
           <div className="flex gap-1 items-center">
             <WhatsappRedirectSvg />
             <EmailRedirectSvg />
-            <CallRedirectSvg />
+            <svg className="w-6 h-6 text-green-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+            <path stroke="green" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m16.344 12.168-1.4-1.4a1.98 1.98 0 0 0-2.8 0l-.7.7a1.98 1.98 0 0 1-2.8 0l-2.1-2.1a1.98 1.98 0 0 1 0-2.8l.7-.7a1.981 1.981 0 0 0 0-2.8l-1.4-1.4a1.828 1.828 0 0 0-2.8 0C-.638 5.323 1.1 9.542 4.78 13.22c3.68 3.678 7.9 5.418 11.564 1.752a1.828 1.828 0 0 0 0-2.804Z"/>
+          </svg>
+          
           </div>
         </div>
         <div className="bg-[url('/imgs/msgbg.png')] bg-cover bg-no-repeat w-full h-full flex flex-col gap-1 p-2 overflow-y-scroll">
