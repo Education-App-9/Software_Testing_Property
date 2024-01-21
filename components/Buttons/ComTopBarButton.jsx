@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 const ComTopBarButton = ({ title }) => {
   const router = useRouter();
   const pathname = usePathname();
+  console.log(title)
 
   const currentPageName = pathname.split("/")[2];
 

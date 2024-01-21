@@ -25,7 +25,7 @@ const CompanyProfilePage = ({ params }) => {
         <div className="flex gap-6 w-full mt-10">
           <div className="w-4/12 flex flex-col gap-6">
             <CompanyProfileCard role={params.dashboard} />
-            <MyWalletCard />
+          
             <ExpiryStatusCard />
           </div>
           <div className="w-8/12">

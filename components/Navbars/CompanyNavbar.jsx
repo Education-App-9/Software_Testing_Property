@@ -3,6 +3,7 @@ import DarkModeToggleButton from "../Buttons/DarkModeToggleButton";
 import NotificationDropdown from "../Dropdowns/NotificationDropdown";
 import CompanyProfileDropdown from "../Dropdowns/CompanyProfileDropdown";
 import ComTopBarButton from "../Buttons/ComTopBarButton";
+import Image from "next/image";
 
 const CompanyNavbar = () => {
   return (
@@ -13,11 +14,13 @@ const CompanyNavbar = () => {
         <ComTopBarButton title="Listing" />
         <ComTopBarButton title="Community" />
         <ComTopBarButton title="Membership" />
-        <div className="">
-          <DarkModeToggleButton />
-        </div>
+        
+
+       
       </div>
       <div className="flex items-center justify-center gap-5">
+        <DarkModeToggleButton />
+        <Image src="/svgs/aiface.svg" width={26} height={25} alt="svg" />
         <div className="w-10 h-10 flex items-center justify-end">
           <NotificationDropdown />
         </div>
