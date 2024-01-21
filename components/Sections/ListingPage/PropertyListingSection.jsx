@@ -21,9 +21,10 @@ const PropertyListingSection = ({ dashboard }) => {
               dashboard === "landing" && "hidden"
             }`}
           >
-            <button className="font-semibold hover:font-bold">
-              Property Request
-            </button>
+           <button className="font-semibold hover:font-bold border border-gray-800 rounded-3xl px-6 py-3">
+            Selling Request
+          </button>
+
             <AddListingButtonCS />
           </div>
         </div>
