@@ -9,6 +9,7 @@ import ComEmployeeSvg from "../Svgs/companydashboard/ComEmployeeSvg";
 import ComMessagingSvg from "../Svgs/companydashboard/ComMessagingSvg";
 import ComWorkSvg from "../Svgs/companydashboard/ComWorkSvg";
 import LandingNavButton from "../Buttons/LandingNavButton";
+import SignOutSvg from "../Svgs/SignOutSvg";
 
 const LandingProfileDropdown = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -90,6 +91,8 @@ const LandingProfileDropdown = () => {
               showDropdown={showDropdown}
               setShowDropdown={setShowDropdown}
             />
+             <LandingNavButton title="Sign Out" showDropdown={showDropdown}
+              setShowDropdown={setShowDropdown} icon={<SignOutSvg />} />
           </div>
         </div>
       }
