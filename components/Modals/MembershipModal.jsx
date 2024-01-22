@@ -1,16 +1,23 @@
 "use client";
-
-import React, { useState } from "react";
+import React from "react";
 import Modal from "./Modal";
 import Image from "next/image";
 import ToggleButton from "../Buttons/ToggleButton";
 
 const MembershipModal = () => {
-  const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = React.useState(false);
+
+  const closeModal = () => {
+    setOpenModal(false);
+  };
+
   return (
     <Modal
       modalOpener={
-        <button className="bg-primary font-semibold px-16 py-2 rounded-full mb-3">
+        <button 
+          className="bg-primary font-semibold px-16 py-2 rounded-full mb-3"
+          onClick={() => setOpenModal(true)}
+        >
           Subscribe
         </button>
       }
@@ -18,7 +25,10 @@ const MembershipModal = () => {
         <div className="flex flex-col w-[540px]">
           <div className="flex justify-between px-5 py-3 border-b-2 border-[rgba(0,0,0,0.1)]">
             <div className="text-lg font-medium">Subscribe Membership</div>
-            <div className="flex items-center justify-center p-1 shadow rounded">
+            <div
+              className="flex items-center justify-center p-1 shadow rounded cursor-pointer"
+              onClick={closeModal}
+            >
               <Image
                 src="/svgs/cross.svg"
                 width={18}
@@ -97,6 +107,21 @@ const MembershipModal = () => {
                 </div>
               </form>
             </div>
+          </div>
+     
+          <div className="flex justify-end gap-3 p-5">
+            <button
+              className="bg-white text-primary font-semibold px-6 py-2 rounded-full border-2 border-primary"
+              onClick={closeModal}
+            >
+              Cancel
+            </button>
+            <button
+              className="bg-primary text-white font-semibold px-6 py-2 rounded-full"
+              onClick={closeModal}
+            >
+              Assign
+            </button>
           </div>
         </div>
       }
