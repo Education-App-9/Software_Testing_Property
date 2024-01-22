@@ -31,7 +31,7 @@ const PropertyLayout = ({ params, children }) => {
           <button className="rounded-full p-3 h-11 w-11 flex items-center justify-center border border-[rgba(0,0,0,0.20)]">
             <CallSvg />
           </button>
-          <button className="h-11 flex items-center justify-center gap-2 px-4 py-2 border border-[rgba(0,0,0,0.20)] rounded-full">
+          <button className="h-11 bg-[#fff5e9] flex items-center justify-center gap-2 px-4 py-2 border border-[#ffaa45] rounded-full">
             <Image src="/imgs/profile-2.png" width={34} height={34} alt="svg" />
             <span>John David</span>
           </button>
