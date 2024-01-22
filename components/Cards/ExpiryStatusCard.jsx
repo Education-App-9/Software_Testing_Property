@@ -34,8 +34,12 @@ const ExpiryStatusCard = () => {
       <div className="text-themetext text-sm mt-2 font-medium">
         4 days remaining
       </div>
-      <div className="flex justify-center items-center mt-5 w-full">
+      <div className="flex flex-col justify-center items-center mt-5 w-full">
         <ViewMembershipHistoryButton />
+        <button className="rounded-full py-2 mt-5 px-10 bg-primary flex items-center justify-center text-md font-semibold shadow-[0px_4px_14px_0px_rgba(115,103,240,0.38)]">
+
+            <p className="font-semibold">Upgrade</p>
+        </button>
       </div>
     </div>
   );
