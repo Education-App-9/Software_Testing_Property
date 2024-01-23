@@ -50,6 +50,29 @@ const ManualSearchPage = () => {
           <span className="text-[26px] text-[#6B6B6B]">Membership</span>
         </div>
       </div>
+     <div>
+        <div className="flex items-center justify-between gap-[101px] mt-[60px] px-[100px]">
+        <p className="text-[18px] font-semibold">
+        Popular
+        </p>
+        
+        </div>
+        <div className="flex items-center justify-between mt-[5px] px-[100px]">
+        <h1 className="text-[26px] font-bold">
+        Our Popular Residence
+        </h1>
+        <p className="flex flex-row text-[15px] font-semibold">
+        Explore All
+        <span>
+        <svg class="h-6 w-6 text-black"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="5" y1="12" x2="19" y2="12" />  <line x1="13" y1="18" x2="19" y2="12" />  <line x1="13" y1="6" x2="19" y2="12" /></svg>
+        </span>
+        </p>
+
+        </div>
+        <div>
+          Popular residence from Backend
+        </div>
+     </div>
     </div>
   );
 };
