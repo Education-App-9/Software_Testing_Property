@@ -132,7 +132,7 @@ const PropertyCard = ({
           <button
             className={`${
               view === "list" && cardSize === "small"
-                ? "w-fit px-7 py-2 text-sm"
+                ? "w-fit px-3 py-2 text-sm"
                 : view === "list" && cardSize !== "small"
                   ? "hidden"
                   : "hidden"

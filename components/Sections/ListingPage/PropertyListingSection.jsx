@@ -70,6 +70,11 @@ const PropertyListingSection = ({ dashboard }) => {
           className={`m-auto my-10 grid w-full gap-10 ${
             propertiesView === "detailed" ? "grid-cols-3" : "grid-cols-1"
           }`}
+          style={{
+            '@media (max-width: 768px)': {
+              gridTemplateColumns: '1fr', 
+            },
+          }}
         >
           <PropertyCard
             id={1}
