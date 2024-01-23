@@ -8,7 +8,7 @@ import SearchIconSvg from "../Svgs/SearchIconSvg";
 import ActionDropdown from "../Dropdowns/ActionDropdown";
 import TablePagination from "./TablePagination";
 
-const SpecialBrokerTable = () => {
+const SpecialBrokerTable = (isModalOpen= false) => {
   const headings = [
     { id: 1, label: "Name", key: "name" },
     { id: 2, label: "Links Opened", key: "linksOpened" },
@@ -110,7 +110,7 @@ const SpecialBrokerTable = () => {
   ];
   return (
     <div className="flex flex-col">
-      <TableWithSort size="lg" headings={headings} data={data} />
+      <TableWithSort size="lg" isModalOpen={isModalOpen} headings={headings} data={data} />
     </div>
   );
 };

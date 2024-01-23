@@ -8,11 +8,15 @@ import TablePagination from "./TablePagination";
 import RecordButton from "../Dropdowns/RecordDropdown";
 import SortByButton from "../Dropdowns/UsersSortByDropdown";
 
-const TableWithSort = ({ headings, data, size, redirectUrl }) => {
+const TableWithSort = ({ isModalOpen = false ,headings, data, size, redirectUrl }) => {
   const [sort, setSort] = useState({ keyToSort: "", order: "asc" });
   const [currentPage, setCurrentPage] = useState(1);
   const [rowCount, setRowCount] = useState(10); // [10, 20, 30, 40]
   const router = useRouter();
+
+  useEffect(()=>{
+      console.log(isModalOpen.isModalOpen)
+    },[isModalOpen])
 
   const handleHeadingClick = (heading) => {
     setSort((prevSort) => {
@@ -50,12 +54,15 @@ const TableWithSort = ({ headings, data, size, redirectUrl }) => {
   return (
     <div className="mt-3 w-full">
       <div className="flex gap-3">
+       { !isModalOpen?.isModalOpen && ( 
+        <>
         <RecordButton
           size={size}
           rowCount={rowCount}
           setRowCount={setRowCount}
         />
         <SortByButton size={size} />
+        </>)}
         <div
           className={`flex items-center justify-center gap-2 rounded-full font-semibold border border-[rgba(0,0,0,0.20)] ${
             size == "lg" ? "h-10 w-72 px-3 text-sm" : "h-9 w-56 px-2 text-xs"

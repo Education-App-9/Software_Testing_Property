@@ -28,7 +28,7 @@ const SpecialBrokerPage = () => {
           + Assign Special Broker
         </button>
       </div>
-      <SpecialBrokerTable />
+      <SpecialBrokerTable isModalOpen={isModalOpen} />
 
       {/* Modal */}
       {isModalOpen && (
