@@ -2,6 +2,7 @@
 
 import PropertyCard from "@/components/Cards/PropertyCard";
 import PropertySortDropdown from "@/components/Dropdowns/PropertySortDropdown";
+import MyMap from "@/components/Map/Map";
 import DetailedSvg from "@/components/Svgs/DetailedSvg";
 import ListViewSvg from "@/components/Svgs/ListViewSvg";
 import LocationPropertySvg from "@/components/Svgs/LocationPropertySvg";
@@ -13,6 +14,17 @@ import React, { useState } from "react";
 const PropertiesPage = () => {
   const router = useRouter();
   const [propertiesView, setPropertiesView] = useState("detailed");
+  const [viewMap, setViewMap] = useState(false)
+
+  const locations = [
+    { lat: 33.69210033411755, lng: 73.00267127166194, name: 'F/10' }, 
+    { lat: 33.67495932296654,  lng: 73.01503089104224, name: 'G/10' }
+  ];
+
+  const showMap = () => {
+    setViewMap(!viewMap)
+  }
+
   return (
     <div className="flex flex-col p-[30px]">
       <div className="flex w-full justify-between">
@@ -65,11 +77,15 @@ const PropertiesPage = () => {
           >
             {propertiesView == "detailed" ? <DetailedSvg /> : <ListViewSvg />}
           </button>
-          <button>
+          <button onClick={showMap}>
             <LocationPropertySvg />
           </button>
         </div>
       </div>
+      { viewMap ? 
+        <div className="mt-5">
+          <MyMap locations={locations} />
+        </div> : 
       <div className="flex flex-wrap gap-5 my-10">
         <PropertyCard
           id={1}
@@ -137,7 +153,8 @@ const PropertiesPage = () => {
           view={propertiesView}
           redirectUrl="properties"
         />
-      </div>
+      </div> 
+    }
     </div>
   );
 };
