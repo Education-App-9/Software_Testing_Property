@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -9,6 +7,7 @@ import CallSvg from "../Svgs/CallSvg";
 import WhatsappRoundedSvg from "../Svgs/WhatsappRoundedSvg";
 import Bookmark2Svg from "../Svgs/Bookmark2Svg";
 import BookmarkSvg from "../Svgs/BookmarkSvg";
+import { useMediaQuery } from 'react-responsive';
 
 const PropertyCard = ({
   id,
@@ -26,23 +25,24 @@ const PropertyCard = ({
   const router = useRouter();
   const pathname = usePathname();
 
+  const isSmallScreen = useMediaQuery({ maxWidth: 1155 });
+
   const currentPageName = pathname.split("/")[1];
   const handleClick = () => {
     router.push(`/${currentPageName}/${redirectUrl}/${id}`);
   };
+
   return (
     <div
       className={`flex ${
-        view == "list"
+        view === "list"
           ? "flex-row items-center justify-center gap-5"
           : "flex-col"
       } rounded-[20px] border border-[rgba(0,0,0,0.20)] px-4 py-[18px] ${
-        view == "list" ? "w-full" : "max-w-fit"
-      }
-      ${scale ? `scale-${scale} w-fit` : `scale-100`}
-      `}
+        view === "list" ? "w-full" : "max-w-fit"
+      } ${scale ? `scale-${scale} w-fit` : `scale-100`}`}
     >
-      <div className="relative flex">
+      <div className="flex">
         <Image
           className={`rounded-2xl ${view !== "list" && ""}`}
           src={image}
@@ -65,7 +65,7 @@ const PropertyCard = ({
           >
             <h1
               className={`${
-                view === "list" && cardSize != "small" ? "text-2xl" : "text-xl"
+                view === "list" && cardSize !== "small" ? "text-2xl" : "text-l"
               } min-w-fit font-semibold`}
             >
               {title}
@@ -84,58 +84,55 @@ const PropertyCard = ({
             >
               Rent
             </p>
-
-            {cardSize !== "small"
-              ? view === "list" && (
-                  <div className="flex w-full items-center justify-between">
-                    <div className="flex items-center justify-between">
+            {cardSize !== "small" && view === "list" && (
+              <div className="flex w-full items-center justify-between">
+                <div className="flex items-center justify-between">
+                  <div className="flex gap-1">
+                    <Image
+                      src="/imgs/profile.png"
+                      width={49}
+                      height={49}
+                      alt="svg"
+                    />
+                    <div className="flex flex-col justify-center gap-1">
+                      <span className="max-w-[110px] text-[11px] font-semibold leading-3">
+                        Noha Mohamed Abdelaziz
+                      </span>
                       <div className="flex gap-1">
                         <Image
-                          src="/imgs/profile.png"
-                          width={49}
-                          height={49}
-                          alt="svg"
+                          src="/svgs/stars.svg"
+                          width={30}
+                          height={8}
+                          alt="stars"
                         />
-                        <div className="flex flex-col justify-center gap-1">
-                          <span className="max-w-[110px] text-[11px] font-semibold leading-3">
-                            Noha Mohamed Abdelaziz
-                          </span>
-                          <div className="flex gap-1">
-                            <Image
-                              src="/svgs/stars.svg"
-                              width={30}
-                              height={8}
-                              alt="stars"
-                            />
-                            <span className="text-[8px] leading-3 text-themetext">
-                              4.0 (12 reviews)
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="flex justify-end gap-3">
-                        <button className="flex h-10 w-10 items-center justify-center rounded-full border border-themetext">
-                          <MessageSvg />
-                        </button>
-                        <button className="flex h-10 w-10 items-center justify-center rounded-full border border-themetext">
-                          <CallSvg />
-                        </button>
-                        <button className="flex h-10 w-10 items-center justify-center rounded-full">
-                          <WhatsappRoundedSvg />
-                        </button>
+                        <span className="text-[8px] leading-3 text-themetext">
+                          4.0 (12 reviews)
+                        </span>
                       </div>
                     </div>
                   </div>
-                )
-              : null}
+                  <div className={`flex ${isSmallScreen ? 'flex-col' : 'justify-end'} gap-3`}>
+                    <button className="flex h-10 w-10 items-center justify-center rounded-full border border-themetext">
+                      <MessageSvg />
+                    </button>
+                    <button className="flex h-10 w-10 items-center justify-center rounded-full border border-themetext">
+                      <CallSvg />
+                    </button>
+                    <button className="flex h-10 w-10 items-center justify-center rounded-full">
+                      <WhatsappRoundedSvg />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
           <button
             className={`${
               view === "list" && cardSize === "small"
                 ? "w-fit px-3 py-2 text-sm"
                 : view === "list" && cardSize !== "small"
-                  ? "hidden"
-                  : "hidden"
+                ? "hidden"
+                : "hidden"
             } rounded-full border border-[rgba(0,0,0,0.40)] font-semibold hover:border-black`}
             onClick={() => handleClick()}
           >
@@ -154,151 +151,105 @@ const PropertyCard = ({
             view === "list" ? "w-full items-end justify-between" : "flex-col"
           }`}
         >
-          <div>
-            <div
-              className={
-                view === "list" ? "flex items-end gap-5" : "flex flex-col gap-4"
-              }
-            >
-              <div className="flex flex-col">
-                <div
-                  className={`flex ${
-                    view === "list" ? "justify-start gap-10" : "justify-between"
-                  } mt-3`}
-                >
-                  <div className="flex">
-                    <Image
-                      src="/svgs/bed.svg"
-                      width={22}
-                      height={20}
-                      alt="svg"
-                    />
-                    <p className="ml-1 text-sm font-medium">{bedrooms} beds</p>
-                  </div>
-                  <div className="flex">
-                    <Image
-                      src="/svgs/bath.svg"
-                      width={22}
-                      height={20}
-                      alt="svg"
-                    />
-                    <p className="ml-1 text-sm font-medium">{bedrooms} baths</p>
-                  </div>
-                  <p
-                    className={`font-semibold text-primary ${
-                      view === "list" && "hidden"
-                    }`}
-                  >
-                    Rent
-                  </p>
-                </div>
-                <div
-                  className={`flex ${
-                    view === "list" ? "justify-start gap-10" : "justify-between"
-                  } mt-3`}
-                >
-                  <div className="flex">
-                    <Image
-                      src="/svgs/stairs.svg"
-                      width={22}
-                      height={20}
-                      alt="svg"
-                    />
-                    <p className="ml-1 text-sm font-medium">{bedrooms} beds</p>
-                  </div>
-                  <div className="flex">
-                    <Image
-                      src="/svgs/triangle.svg"
-                      width={22}
-                      height={20}
-                      alt="svg"
-                    />
-                    <p className="ml-1 text-sm font-medium">{bedrooms} beds</p>
-                  </div>
-                  <div
-                    className={`flex items-center gap-[2px] ${
-                      view === "list" && "hidden"
-                    }`}
-                  >
-                    <Star width={20} height={20} filled />
-                    <span className="text-sm font-bold text-secondary">
-                      4.7
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center gap-5">
-                <div
-                  className={`flex items-center gap-1 ${
-                    view !== "list" && "w-full border-b pb-5"
-                  }`}
-                >
+          <div className={view === "list" ? "flex items-end gap-5" : "flex flex-col gap-4"}>
+            <div className="flex flex-col">
+              <div
+                className={`flex ${
+                  view === "list" ? "justify-start gap-10" : "justify-between"
+                } mt-3`}
+              >
+                <div className="flex">
                   <Image
-                    src="/svgs/address.svg"
-                    width={12}
-                    height={15}
+                    src="/svgs/bed.svg"
+                    width={22}
+                    height={20}
                     alt="svg"
                   />
-                  <small>{address}</small>
+                  <p className="ml-1 text-sm font-medium">{bedrooms} beds</p>
+                </div>
+                <div className="flex">
+                  <Image
+                    src="/svgs/bath.svg"
+                    width={22}
+                    height={20}
+                    alt="svg"
+                  />
+                  <p className="ml-1 text-sm font-medium">{bedrooms} baths</p>
+                </div>
+                <p
+                  className={`font-semibold text-primary ${
+                    view === "list" && "hidden"
+                  }`}
+                >
+                  Rent
+                </p>
+              </div>
+              <div
+                className={`flex ${
+                  view === "list" ? "justify-start gap-10" : "justify-between"
+                } mt-3`}
+              >
+                <div className="flex">
+                  <Image
+                    src="/svgs/stairs.svg"
+                    width={22}
+                    height={20}
+                    alt="svg"
+                  />
+                  <p className="ml-1 text-sm font-medium">{bedrooms} beds</p>
+                </div>
+                <div className="flex">
+                  <Image
+                    src="/svgs/triangle.svg"
+                    width={22}
+                    height={20}
+                    alt="svg"
+                  />
+                  <p className="ml-1 text-sm font-medium">{bedrooms} beds</p>
                 </div>
                 <div
                   className={`flex items-center gap-[2px] ${
-                    view !== "list" && "hidden"
+                    view === "list" && "hidden"
                   }`}
                 >
                   <Star width={20} height={20} filled />
-                  <span className="text-sm font-bold text-secondary">4.7</span>
+                  <span className="text-sm font-bold text-secondary">
+                    4.7
+                  </span>
                 </div>
               </div>
             </div>
-
-            {view !== "list" && (
-              <div className="flex items-center justify-between pb-3">
-                <div className="flex gap-1">
-                  <Image
-                    src="/imgs/profile.png"
-                    width={49}
-                    height={49}
-                    alt="svg"
-                  />
-                  <div className="flex flex-col justify-center gap-1">
-                    <span className="max-w-[110px] text-[11px] font-semibold leading-3">
-                      Noha Mohamed Abdelaziz
-                    </span>
-                    <div className="flex gap-1">
-                      <Image
-                        src="/svgs/stars.svg"
-                        width={30}
-                        height={8}
-                        alt="stars"
-                      />
-                      <span className="text-[8px] leading-3 text-themetext">
-                        4.0 (12 reviews)
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex gap-1">
-                  <button className="flex h-10 w-10 items-center justify-center rounded-full border border-themetext">
-                    <MessageSvg />
-                  </button>
-                  <button className="flex h-10 w-10 items-center justify-center rounded-full border border-themetext">
-                    <CallSvg />
-                  </button>
-                  <button className="flex h-10 w-10 items-center justify-center rounded-full">
-                    <WhatsappRoundedSvg />
-                  </button>
-                </div>
+            <div className="flex items-center gap-5">
+              <div
+                className={`flex items-center gap-1 ${
+                  view !== "list" && "w-full border-b pb-5"
+                }`}
+              >
+                <Image
+                  src="/svgs/address.svg"
+                  width={12}
+                  height={15}
+                  alt="svg"
+                />
+                <small>{address}</small>
               </div>
-            )}
+              <div
+                className={`flex items-center gap-[2px] ${
+                  view !== "list" && "hidden"
+                }`}
+              >
+                <Star width={20} height={20} filled />
+                <span className="text-sm font-bold text-secondary">4.7</span>
+              </div>
+            </div>
           </div>
           <button
             className={`${
               view === "list" && cardSize === "small"
                 ? "hidden"
                 : view === "list" && cardSize !== "small"
-                  ? "w-fit px-20"
-                  : "w-full"
+                ? "w-fit px-1.5"
+                : "w-full"
             } rounded-full border border-[rgba(0,0,0,0.40)] py-3 font-semibold hover:border-black`}
             onClick={() => handleClick()}
           >
