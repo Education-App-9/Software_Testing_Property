@@ -70,15 +70,17 @@ const PropertiesPage = () => {
         <div className="flex gap-3">
           <button
             onClick={() =>
-              setPropertiesView(
+             { setPropertiesView(
                 propertiesView == "detailed" ? "list" : "detailed"
               )
+              setViewMap(false)
+            }
             }
           >
             {propertiesView == "detailed" ? <DetailedSvg /> : <ListViewSvg />}
           </button>
           <button onClick={showMap}>
-            <LocationPropertySvg />
+            <LocationPropertySvg map = {viewMap}  />
           </button>
         </div>
       </div>
