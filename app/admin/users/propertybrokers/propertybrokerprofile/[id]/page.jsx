@@ -85,9 +85,11 @@ const PropertyBrokerProfile = () => {
                 bedrooms="3"
                 type="Villa"
                 view={propertiesView}
+                cardSize="small"
               />
               <PropertyCard
                 id={2}
+                cardSize="small"
                 image="/imgs/property-big.png"
                 title="Boston Family Villa"
                 desc="Lorem ispum Lorem ispumLorem ispumLorem ispumLorem ispumLorem ispumLorem ispum Lorem ispumLorem ispumLorem ispumLorem"
@@ -98,6 +100,7 @@ const PropertyBrokerProfile = () => {
               />
               <PropertyCard
                 id={3}
+                cardSize="small"
                 image="/imgs/property-big.png"
                 title="Boston Family Villa"
                 desc="Lorem ispum Lorem ispumLorem ispumLorem ispumLorem ispumLorem ispumLorem ispum Lorem ispumLorem ispumLorem ispumLorem"
@@ -108,6 +111,7 @@ const PropertyBrokerProfile = () => {
               />
               <PropertyCard
                 id={4}
+                cardSize="small"
                 image="/imgs/property-big.png"
                 title="Boston Family Villa"
                 desc="Lorem ispum Lorem ispumLorem ispumLorem ispumLorem ispumLorem ispumLorem ispum Lorem ispumLorem ispumLorem ispumLorem"
@@ -118,6 +122,7 @@ const PropertyBrokerProfile = () => {
               />
               <PropertyCard
                 id={5}
+                cardSize="small"
                 image="/imgs/property-big.png"
                 title="Boston Family Villa"
                 desc="Lorem ispum Lorem ispumLorem ispumLorem ispumLorem ispumLorem ispumLorem ispum Lorem ispumLorem ispumLorem ispumLorem"
@@ -125,9 +130,11 @@ const PropertyBrokerProfile = () => {
                 bedrooms="3"
                 type="Villa"
                 view={propertiesView}
+
               />
               <PropertyCard
                 id={6}
+                cardSize="small"
                 image="/imgs/property-big.png"
                 title="Boston Family Villa"
                 desc="Lorem ispum Lorem ispumLorem ispumLorem ispumLorem ispumLorem ispumLorem ispum Lorem ispumLorem ispumLorem ispumLorem"

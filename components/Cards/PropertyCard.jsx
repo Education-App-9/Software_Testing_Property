@@ -21,10 +21,11 @@ const PropertyCard = ({
   redirectUrl,
   cardSize,
   scale,
-  CompanyProfile = false
+  CompanyProfile = false,
 }) => {
   const router = useRouter();
   const pathname = usePathname();
+
 
   const isSmallScreen = useMediaQuery({ maxWidth: 1155 });
 
@@ -32,6 +33,11 @@ const PropertyCard = ({
   const handleClick = () => {
     router.push(`/${currentPageName}/${redirectUrl}/${id}`);
   };
+
+
+  // Check if the URL contains 'propertyownerprofile'
+  const property = pathname.includes("propertyownerprofile");
+  console.log(property)
 
   return (
     <div
@@ -87,48 +93,54 @@ const PropertyCard = ({
             </p>
             </>}
            
-            {cardSize !== "small" && view === "list" && (
-              <div className="flex w-full items-center justify-between">
-                <div className="flex items-center justify-between">
-                  <div className="flex gap-1">
-                    <Image
-                      src="/imgs/profile.png"
-                      width={49}
-                      height={49}
-                      alt="svg"
-                    />
-                    <div className="flex flex-col justify-center gap-1">
-                      <span className="max-w-[110px] text-[11px] font-semibold leading-3">
-                        Noha Mohamed Abdelaziz
-                      </span>
-                      <div className="flex gap-1">
-                        <Image
-                          src="/svgs/stars.svg"
-                          width={30}
-                          height={8}
-                          alt="stars"
-                        />
-                        <span className="text-[8px] leading-3 text-themetext">
-                          4.0 (12 reviews)
+            {
+              !property && cardSize !== "small" && view === "list" &&  (
+                <div className="flex w-full items-center justify-between">
+                  <div className="flex items-center justify-between">
+                    <div className="flex gap-1">
+                      <Image
+                        src="/imgs/profile.png"
+                        width={49}
+                        height={49}
+                        alt="svg"
+                      />
+                      <div className="flex flex-col justify-center gap-1">
+                        <span className="max-w-[110px] text-[11px] font-semibold leading-3">
+                          Noha Mohamed Abdelaziz
                         </span>
+                        <div className="flex gap-1">
+                          <Image
+                            src="/svgs/stars.svg"
+                            width={30}
+                            height={8}
+                            alt="stars"
+                          />
+                          <span className="text-[8px] leading-3 text-themetext">
+                            4.0 (12 reviews)
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className={`flex ${isSmallScreen ? 'flex-col' : 'justify-end'} gap-3`}>
-                    <button className="flex h-10 w-10 items-center justify-center rounded-full border border-themetext">
-                      <MessageSvg />
-                    </button>
-                    <button className="flex h-10 w-10 items-center justify-center rounded-full border border-themetext">
-                      <CallSvg />
-                    </button>
-                    <button className="flex h-10 w-10 items-center justify-center rounded-full">
-                      <WhatsappRoundedSvg />
-                    </button>
+                    <div className={`flex ${isSmallScreen ? 'flex-col' : 'justify-end'} gap-3`}>
+                      <button className="flex h-10 w-10 items-center justify-center rounded-full border border-themetext">
+                        <MessageSvg />
+                      </button>
+                      <button className="flex h-10 w-10 items-center justify-center rounded-full border border-themetext">
+                        <CallSvg />
+                      </button>
+                      <button className="flex h-10 w-10 items-center justify-center rounded-full">
+                        <WhatsappRoundedSvg />
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
+              )
+            }
+
+            
+
           </div>
+         
           <button
             className={`${
               view === "list" && cardSize === "small"
@@ -142,7 +154,7 @@ const PropertyCard = ({
             View listing details
           </button>
         </div>
-        {CompanyProfile && 
+        { CompanyProfile && 
               <div style={{
                 display:'flex' , 
                 flexDirection : 'row',
@@ -163,6 +175,49 @@ const PropertyCard = ({
               Rent
             </p>
             </div>}
+
+            { property && cardSize !== "small" && view === "list" && (
+              <div className="my-2">
+              <div className="flex items-center justify-between">
+                <div className="flex gap-1">
+                  <Image
+                    src="/imgs/profile.png"
+                    width={49}
+                    height={49}
+                    alt="svg"
+                  />
+                  <div className="flex flex-col justify-center gap-1">
+                    <span className="max-w-[110px] text-[11px] font-semibold leading-3">
+                      Noha Mohamed Abdelaziz
+                    </span>
+                    <div className="flex gap-1">
+                      <Image
+                        src="/svgs/stars.svg"
+                        width={30}
+                        height={8}
+                        alt="stars"
+                      />
+                      <span className="text-[8px] leading-3 text-themetext">
+                        4.0 (12 reviews)
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className={`flex ${isSmallScreen ? 'flex-col' : 'justify-end'} gap-3`}>
+                  <button className="flex h-10 w-10 items-center justify-center rounded-full border border-themetext">
+                    <MessageSvg />
+                  </button>
+                  <button className="flex h-10 w-10 items-center justify-center rounded-full border border-themetext">
+                    <CallSvg />
+                  </button>
+                  <button className="flex h-10 w-10 items-center justify-center rounded-full">
+                    <WhatsappRoundedSvg />
+                  </button>
+                </div>
+              </div>
+            </div>
+            )}
+       
         <p
           className={`mt-2 text-sm text-darkgray ${
             view === "list" ? "" : "max-w-[260px]"
@@ -267,7 +322,9 @@ const PropertyCard = ({
               </div>
             </div>
           </div>
-          <button
+          {
+           !property && 
+            (<button
             className={`${
               view === "list" && cardSize === "small"
                 ? "hidden"
@@ -279,7 +336,32 @@ const PropertyCard = ({
           >
             View listing details
           </button>
+          )}
+          
         </div>
+        {
+           property && 
+            (
+            <div style={{
+              display:"flex",
+              justifyContent:'center',
+              alignItems:'center',
+              marginTop: 6
+            }}>
+               <button
+                className={`${
+                  view === "list" && cardSize === "small"
+                    ? "hidden"
+                    : view === "list" && cardSize !== "small"
+                    ? "w-fit px-1.5"
+                    : "w-full"
+                } rounded-full border border-[rgba(0,0,0,0.40)] px-4 py-3 font-semibold hover:border-black`}
+                onClick={() => handleClick()}
+              >
+                View listing details
+              </button>
+            </div>
+          )}
       </div>
     </div>
   );
