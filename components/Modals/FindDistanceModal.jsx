@@ -85,18 +85,23 @@ const FindDistanceModal = () => {
       setOpenModal={setOpenDistanceModal}
     />
     {openMapModal && (
-      <Modal
-        modalContent={
-          <div>
-            <MyMap locations={locations} />
+      <Modal 
+        
+      modalContent={
+       
+         <div style={{ width: '800px' }}> {/* Adjust the width as needed */}
+          <MyMap locations={locations} />
+          <div className="flex justify-center items-center">
             <button
               onClick={() => setOpenMapModal(false)}
-              className="bg-primary py-3 text-black rounded-full w-48 text-sm font-bold mt-8"
+              className="bg-primary py-3 text-black rounded-full w-48 text-sm font-bold m-8"
             >
               Close Map
             </button>
           </div>
-        }
+        </div>
+      }
+      
         openModal={openMapModal}
         setOpenModal={setOpenMapModal}
       />
