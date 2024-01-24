@@ -85,6 +85,7 @@ const CompanyProfile = () => {
                 bedrooms="3"
                 type="Villa"
                 view={propertiesView}
+                CompanyProfile = {true}
               />
               <PropertyCard
                 id={2}
@@ -96,6 +97,7 @@ const CompanyProfile = () => {
                 bedrooms="3"
                 type="Villa"
                 view={propertiesView}
+                CompanyProfile = {true}
               />
               <PropertyCard
                 id={3}
@@ -107,6 +109,7 @@ const CompanyProfile = () => {
                 bedrooms="3"
                 type="Villa"
                 view={propertiesView}
+                CompanyProfile = {true}
               />
               <PropertyCard
                 id={4}
@@ -118,6 +121,7 @@ const CompanyProfile = () => {
                 bedrooms="3"
                 type="Villa"
                 view={propertiesView}
+                CompanyProfile = {true}
               />
               <PropertyCard
                 id={5}
@@ -129,6 +133,7 @@ const CompanyProfile = () => {
                 bedrooms="3"
                 type="Villa"
                 view={propertiesView}
+                CompanyProfile = {true}
               />
               <PropertyCard
                 id={6}
@@ -140,6 +145,7 @@ const CompanyProfile = () => {
                 bedrooms="3"
                 type="Villa"
                 view={propertiesView}
+                CompanyProfile = {true}
               />
             </div>
           </div>

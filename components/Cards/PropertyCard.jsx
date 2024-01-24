@@ -21,6 +21,7 @@ const PropertyCard = ({
   redirectUrl,
   cardSize,
   scale,
+  CompanyProfile = false
 }) => {
   const router = useRouter();
   const pathname = usePathname();
@@ -70,7 +71,7 @@ const PropertyCard = ({
             >
               {title}
             </h1>
-            <p
+           {!CompanyProfile && <> <p
               className={`h-fit rounded-lg bg-[rgba(31,76,107,0.69)] px-2 py-1 text-xs font-bold text-white ${
                 view === "list" ? "ml-3" : "ml-0"
               }`}
@@ -84,6 +85,8 @@ const PropertyCard = ({
             >
               Rent
             </p>
+            </>}
+           
             {cardSize !== "small" && view === "list" && (
               <div className="flex w-full items-center justify-between">
                 <div className="flex items-center justify-between">
@@ -139,6 +142,27 @@ const PropertyCard = ({
             View listing details
           </button>
         </div>
+        {CompanyProfile && 
+              <div style={{
+                display:'flex' , 
+                flexDirection : 'row',
+                justifyContent:'center'
+              
+              }}> <p
+              className={`h-fit rounded-lg bg-[rgba(31,76,107,0.69)] px-2 py-1 text-xs font-bold text-white ${
+                view === "list" ? "ml-3" : "ml-0"
+              }`}
+            >
+              $370<span className="text-[0.5rem] font-normal">/month</span>
+            </p>
+            <p
+              className={`font-semibold text-primary ml-3 ${
+                view !== "list" && "hidden"
+              }`}
+            >
+              Rent
+            </p>
+            </div>}
         <p
           className={`mt-2 text-sm text-darkgray ${
             view === "list" ? "" : "max-w-[260px]"
