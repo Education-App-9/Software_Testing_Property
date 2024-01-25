@@ -1,6 +1,18 @@
+import { useEffect } from "react";
 
 
 const Modal = ({ openModal, setOpenModal, modalOpener, modalContent }) => {
+  useEffect(() => {
+    if (openModal) {
+      document.body.style.overflow = 'auto';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [openModal]);
   return (
     <div>
       <div className="cursor-pointer" onClick={() => setOpenModal(true)}>
