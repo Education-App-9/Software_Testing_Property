@@ -9,7 +9,13 @@ const OptionButtonMore = ({ title, icon }) => {
   const navigateToPage = () => {
     if (title === "My Activity") {
       router.push(`/home/activity`);
-    } else {
+    } 
+    else if (title === "Social Media Compaign") {
+      router.push(`/home/social-media-compaign`);
+    }
+    else if (title === "Featured Properties") {
+      router.push(`/home/Featured-Properties`);
+    }else {
       router.push(`/home/${title.toLowerCase().replace(" ", "-")}`);
     }
   };
