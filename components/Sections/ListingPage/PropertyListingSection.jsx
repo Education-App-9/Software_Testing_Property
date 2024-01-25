@@ -7,10 +7,15 @@ import ListViewSvg from "@/components/Svgs/ListViewSvg";
 import LocationPropertySvg from "@/components/Svgs/LocationPropertySvg";
 import SortSvg from "@/components/Svgs/SortSvg";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 
 const PropertyListingSection = ({ dashboard }) => {
+  
+  const pathname = usePathname()
   const [propertiesView, setPropertiesView] = useState("detailed");
+
+
   return (
     <div className="flex items-center justify-center">
       <div className="flex w-full max-w-7xl flex-col px-10 py-10">
@@ -22,9 +27,17 @@ const PropertyListingSection = ({ dashboard }) => {
             }`}
           >
            <button className="font-semibold hover:font-bold border border-gray-800 rounded-3xl px-6 py-3">
-            Selling Request
+            {pathname.includes("broker") && "Selling Request"}
+            {pathname.includes("company") && "Property Request"}
+            {pathname.includes("propertyowner") && "Property Request"}
+            {pathname.includes("agent") && "Selling Request"}
           </button>
-
+          {
+            pathname.includes("propertyowner") &&
+            <button className="font-semibold hover:font-bold border border-gray-800 rounded-3xl px-6 py-3">
+              Sell For me
+            </button>
+          }
             <AddListingButtonCS />
           </div>
         </div>

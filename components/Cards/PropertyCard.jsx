@@ -37,7 +37,6 @@ const PropertyCard = ({
 
   // Check if the URL contains 'propertyownerprofile'
   const property = pathname.includes("propertyownerprofile");
-  console.log(isSmallScreen)
 
   return (
     <div
