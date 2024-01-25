@@ -8,6 +8,7 @@ import CallSvg from "../Svgs/CallSvg";
 import WhatsappRoundedSvg from "../Svgs/WhatsappRoundedSvg";
 import Bookmark2Svg from "../Svgs/Bookmark2Svg";
 import BookmarkSvg from "../Svgs/BookmarkSvg";
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const PropertyCard = ({
   id,
@@ -27,7 +28,7 @@ const PropertyCard = ({
   const pathname = usePathname();
 
 
-  const isSmallScreen = window?.innerWidth <= 1155 ?? false;
+  const isSmallScreen =  useMediaQuery('(max-width:1155px)');
 
   const currentPageName = pathname.split("/")[1];
   const handleClick = () => {
