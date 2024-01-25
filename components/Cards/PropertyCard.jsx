@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -7,7 +8,6 @@ import CallSvg from "../Svgs/CallSvg";
 import WhatsappRoundedSvg from "../Svgs/WhatsappRoundedSvg";
 import Bookmark2Svg from "../Svgs/Bookmark2Svg";
 import BookmarkSvg from "../Svgs/BookmarkSvg";
-import { useMediaQuery } from 'react-responsive';
 
 const PropertyCard = ({
   id,
@@ -27,7 +27,7 @@ const PropertyCard = ({
   const pathname = usePathname();
 
 
-  const isSmallScreen = useMediaQuery({ maxWidth: 1155 });
+  const isSmallScreen = window?.innerWidth <= 1155 ?? false;
 
   const currentPageName = pathname.split("/")[1];
   const handleClick = () => {
@@ -37,7 +37,7 @@ const PropertyCard = ({
 
   // Check if the URL contains 'propertyownerprofile'
   const property = pathname.includes("propertyownerprofile");
-  console.log(property)
+  console.log(isSmallScreen)
 
   return (
     <div

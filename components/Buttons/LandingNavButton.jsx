@@ -7,7 +7,7 @@ const LandingNavButton = ({ icon, title, showDropdown, setShowDropdown }) => {
 
   const navigateToPage = () => {
     if (title.toLowerCase() === "profile") {
-      router.push(`/home/activity`);
+      router.push(`/home/profile`);
     } else if (title.toLowerCase() === "dashboard") {
       router.push(`/home`);
     } else if (title.toLowerCase() === "employees") {
